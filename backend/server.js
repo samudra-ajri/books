@@ -4,6 +4,7 @@ import dotenv from 'dotenv'
 import morgan from 'morgan'
 
 import homeRoutes from './routes/homeRoute.js'
+import { errorHandler, notFound } from './middlewares/errorMiddleware.js'
 
 dotenv.config()
 const app  = express()
@@ -18,5 +19,8 @@ app.use(cors())
 app.use(express.json())
 
 app.use('/', homeRoutes)
+
+app.use(notFound)
+app.use(errorHandler)
 
 app.listen(PORT, console.log(`Server running in ${ENV} mode on port ${PORT}`))
