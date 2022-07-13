@@ -1,7 +1,7 @@
 import mongoose from 'mongoose'
 
 const favoriteBookSchema = mongoose.Schema({
-    bookId: {
+    googleBookId: {
         type: String,
         required: true
     },

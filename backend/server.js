@@ -4,7 +4,8 @@ import dotenv from 'dotenv'
 import morgan from 'morgan'
 
 import connectDB from './config/db.js'
-import homeRoutes from './routes/homeRoute.js'
+import homeRoutes from './routes/homeRoutes.js'
+import favoriteBookRoutes from './routes/favoriteBookRoutes.js'
 import { errorHandler, notFound } from './middlewares/errorMiddleware.js'
 
 dotenv.config()
@@ -21,6 +22,7 @@ app.use(cors())
 app.use(express.json())
 
 app.use('/', homeRoutes)
+app.use('/api/favorites', favoriteBookRoutes)
 
 app.use(notFound)
 app.use(errorHandler)
