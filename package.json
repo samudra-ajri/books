@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "A mini project about book searching using google apis",
   "main": "server.js",
+  "type": "module",
   "scripts": {
     "start": "node backend/server.js",
     "server": "nodemon backend/server.js"
@@ -18,8 +19,10 @@
   },
   "homepage": "https://github.com/samudra-ajri/books#readme",
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
+    "express-async-handler": "^1.2.0",
     "mongoose": "^6.4.4",
     "morgan": "^1.10.0"
   },
