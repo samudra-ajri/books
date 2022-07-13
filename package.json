@@ -1,0 +1,29 @@
+{
+  "name": "books",
+  "version": "1.0.0",
+  "description": "A mini project about book searching using google apis",
+  "main": "server.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "server": "nodemon backend/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/samudra-ajri/books.git"
+  },
+  "author": "Samudra Ajri Kifli",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/samudra-ajri/books/issues"
+  },
+  "homepage": "https://github.com/samudra-ajri/books#readme",
+  "dependencies": {
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "mongoose": "^6.4.4",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  }
+}
