@@ -3,10 +3,12 @@ import cors from 'cors'
 import dotenv from 'dotenv'
 import morgan from 'morgan'
 
+import connectDB from './config/db.js'
 import homeRoutes from './routes/homeRoute.js'
 import { errorHandler, notFound } from './middlewares/errorMiddleware.js'
 
 dotenv.config()
+connectDB()
 const app  = express()
 const PORT = process.env.PORT
 const ENV  = process.env.APP_ENV
