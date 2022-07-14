@@ -8,7 +8,7 @@ A mini project about book searching using google apis
 - NodeJs  17.5
 
 ## Usage
-Rename the .envexample to .env and add your env variables
+Rename the .env.example to .env and add your env variables
 
 ### Install dependencies
 ```
