@@ -8,7 +8,7 @@ function App() {
   return (
     <>
       <Router>
-        <Container maxWidth="sm">
+        <Container>
           <Header />
           <Routes>
             <Route path='/' element={<Home />}></Route>

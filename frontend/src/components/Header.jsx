@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 function Header() {
   return (
     <>
-      <Box sx={{ pt: 15 }}>
+      <Box sx={{ pb: 15 }}>
         <AppBar color='default'>
           <Toolbar>
             <Typography variant="h6" component={Link} to="/" sx={{
