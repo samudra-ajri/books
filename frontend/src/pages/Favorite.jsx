@@ -8,7 +8,6 @@ import { getFavoriteBooks } from '../features/favorites/favoriteSlice'
 function Favorite() {
   const dispatch = useDispatch()
   const { books, isLoading, isError, message } = useSelector((state) => state.favoriteBooks)
-  const favoriteBooks = books.books ?? []
 
   useEffect(() => {
     if (isError) toast.error(message)
@@ -29,11 +28,12 @@ function Favorite() {
         </Box>
       ) : (
         <Grid container spacing={2} paddingTop={5} paddingBottom={10}>
-          {favoriteBooks.map(book =>
+          {books.map(book =>
             <MediaCard
               key={book._id}
               page='favorite'
               book={{
+                id: book._id,
                 title: book.title,
                 avgRating: book.averageRating,
                 ratingsCount: book.ratingsCount,

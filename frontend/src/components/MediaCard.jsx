@@ -7,8 +7,12 @@ import Typography from '@mui/material/Typography'
 import { Grid, Rating } from '@mui/material'
 import BookmarkIcon from '@mui/icons-material/BookmarkBorderRounded'
 import { Fragment } from 'react'
+import { useDispatch } from 'react-redux'
+import { deleteFavoriteBook } from '../features/favorites/favoriteSlice'
 
 function MediaCard(props) {
+  const dispatch = useDispatch()
+  const id = props.book.id
   const title = props.book.title
   const avgRating = props.book.avgRating ?? 0
   const ratingsCount = props.book.ratingsCount ?? 0
@@ -17,6 +21,10 @@ function MediaCard(props) {
   const page = props.page
   let authors = props.book.authors ?? []
   if (authors.length > 2) authors = [authors[0], authors[1] + ', et al.']
+
+  const removeFavorite = () => {
+    dispatch(deleteFavoriteBook(id))
+  }
 
   return (
     <Grid item>
@@ -34,7 +42,7 @@ function MediaCard(props) {
               <Typography variant='subtitle2'>Add To Favorite</Typography>
             </Button>
           ) : (
-            <Button color='inherit'>
+            <Button color='inherit' onClick={removeFavorite}>
               <BookmarkIcon fontSize='medium' />
               <Typography variant='subtitle2'>Remove Favorite</Typography>
             </Button>

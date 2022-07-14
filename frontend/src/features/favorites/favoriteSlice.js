@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import favoriteBooksService from './favoriteService'
 
 const initialState = {
-  books: {},
+  books: [],
   isError: false,
   isSuccess: false,
   isLoading: false,
@@ -59,7 +59,7 @@ export const favoriteBookSlice = createSlice({
       .addCase(getFavoriteBooks.fulfilled, (state, action) => {
         state.isLoading = false
         state.isSuccess = true
-        state.books = action.payload
+        state.books = action.payload.books
       })
       .addCase(getFavoriteBooks.rejected, (state, action) => {
         state.isLoading = false

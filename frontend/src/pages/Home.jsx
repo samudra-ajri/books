@@ -28,6 +28,7 @@ function Home() {
               key={book.id}
               page='home'
               book={{
+                id: book.id,
                 title: book.volumeInfo.title,
                 avgRating: book.volumeInfo.averageRating,
                 ratingsCount: book.volumeInfo.ratingsCount,
