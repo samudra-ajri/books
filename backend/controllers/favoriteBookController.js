@@ -1,5 +1,5 @@
-import asyncHandler from 'express-async-handler'
-import FavoriteBook from '../models/favoriteBookModel.js'
+const asyncHandler = require ('express-async-handler')
+const FavoriteBook = require ('../models/favoriteBookModel')
 
 // @desc    Create new favorite book
 // @route   POST /api/favorites
@@ -64,7 +64,7 @@ const deleteFavorite = asyncHandler(async (req, res) => {
     }
 })
 
-export { 
+module.exports = { 
     createFavorite,
     getFavorites,
     deleteFavorite

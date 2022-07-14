@@ -1,4 +1,4 @@
-import asyncHandler from 'express-async-handler'
+const asyncHandler = require ('express-async-handler')
 
 // @desc    Home
 // @route   GET /
@@ -10,4 +10,4 @@ const home = asyncHandler(async (req, res) => {
     })
 })
 
-export { home }
+module.exports = { home }

@@ -1,4 +1,4 @@
-import mongoose from 'mongoose'
+const mongoose = require('mongoose')
 
 const favoriteBookSchema = mongoose.Schema({
     googleBookId: {
@@ -28,4 +28,4 @@ const favoriteBookSchema = mongoose.Schema({
 
 const FavoriteBook = mongoose.model('FavoriteBook', favoriteBookSchema)
 
-export default FavoriteBook
+module.exports =  FavoriteBook

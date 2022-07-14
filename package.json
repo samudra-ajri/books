@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "A mini project about book searching using google apis",
   "main": "server.js",
-  "type": "module",
   "scripts": {
     "start": "node backend/server.js",
     "server": "nodemon backend/server.js",

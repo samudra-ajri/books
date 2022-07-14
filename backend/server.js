@@ -1,18 +1,19 @@
-import express from 'express'
-import cors from 'cors'
-import dotenv from 'dotenv'
-import morgan from 'morgan'
+const express = require ('express')
+const cors = require ('cors')
+const dotenv = require ('dotenv')
+const morgan = require ('morgan')
+const path = require ('path')
 
-import connectDB from './config/db.js'
-import homeRoutes from './routes/homeRoutes.js'
-import favoriteBookRoutes from './routes/favoriteBookRoutes.js'
-import { errorHandler, notFound } from './middlewares/errorMiddleware.js'
+const connectDB = require ('./config/db')
+const homeRoutes = require ('./routes/homeRoutes')
+const favoriteBookRoutes = require ('./routes/favoriteBookRoutes')
+const { errorHandler, notFound } = require ('./middlewares/errorMiddleware')
 
 dotenv.config()
 connectDB()
-const app  = express()
+const app = express()
 const PORT = process.env.PORT
-const ENV  = process.env.APP_ENV
+const ENV = process.env.APP_ENV
 
 if (ENV === 'staging' || ENV === 'local') {
     app.use(morgan('dev'))
@@ -23,6 +24,18 @@ app.use(express.json())
 
 app.use('/', homeRoutes)
 app.use('/api/favorites', favoriteBookRoutes)
+
+// Serve frontend
+if (process.env.APP_ENV === 'production') {
+    app.use(express.static(path.join(__dirname, '../frontend/build')));
+    app.get('*', (req, res) =>
+        res.sendFile(
+            path.resolve(__dirname, '../', 'frontend', 'build', 'index.html')
+        )
+    );
+} else {
+    app.get('/');
+}
 
 app.use(notFound)
 app.use(errorHandler)
