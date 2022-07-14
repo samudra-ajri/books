@@ -1,17 +1,19 @@
 import { Box, CircularProgress, Grid, Typography } from '@mui/material'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { toast } from 'react-toastify'
 import MediaCard from '../components/MediaCard'
 import { getFavoriteBooks } from '../features/favorites/favoriteSlice'
 
 function Favorite() {
   const dispatch = useDispatch()
-  const { books, isLoading, isSuccess } = useSelector((state) => state.favoriteBooks)
+  const { books, isLoading, isError, message } = useSelector((state) => state.favoriteBooks)
   const favoriteBooks = books.books ?? []
 
   useEffect(() => {
+    if (isError) toast.error(message)
     dispatch(getFavoriteBooks())
-  }, [dispatch])
+  }, [isError, message, dispatch])
 
   return (
     <>

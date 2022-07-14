@@ -27,6 +27,24 @@ export const getFavoriteBooks = createAsyncThunk(
   }
 )
 
+// Delete a favorite book
+export const deleteFavoriteBook = createAsyncThunk(
+  'favoriteBooks/delete',
+  async (id, thunkAPI) => {
+    try {
+      return await favoriteBooksService.deleteFavoriteBook(id)
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString()
+      return thunkAPI.rejectWithValue(message)
+    }
+  }
+)
+
 export const favoriteBookSlice = createSlice({
   name: 'favoriteBook',
   initialState,
@@ -44,6 +62,21 @@ export const favoriteBookSlice = createSlice({
         state.books = action.payload
       })
       .addCase(getFavoriteBooks.rejected, (state, action) => {
+        state.isLoading = false
+        state.isError = true
+        state.message = action.payload
+      })
+      .addCase(deleteFavoriteBook.pending, (state) => {
+        state.isLoading = true
+      })
+      .addCase(deleteFavoriteBook.fulfilled, (state, action) => {
+        state.isLoading = false
+        state.isSuccess = true
+        state.books = state.books.filter(
+          (book) => book._id !== action.payload.id
+        )
+      })
+      .addCase(deleteFavoriteBook.rejected, (state, action) => {
         state.isLoading = false
         state.isError = true
         state.message = action.payload
