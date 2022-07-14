@@ -17,7 +17,7 @@ function SearchBar() {
     <>
       <form onSubmit={onSubmit}>
         <Grid container justifyContent="center" padding={5}>
-          <Grid item xs={6}>
+          <Grid item xs={12} sm={6}>
             <TextField
               name="Search"
               placeholder="Search your book..."
