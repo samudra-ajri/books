@@ -6,6 +6,7 @@ import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import { Grid, Rating } from '@mui/material'
 import BookmarkIcon from '@mui/icons-material/BookmarkBorderRounded'
+import { Fragment } from 'react'
 
 function MediaCard(props) {
   const title = props.book.title
@@ -41,7 +42,11 @@ function MediaCard(props) {
             <Rating name='half-rating-read' size='small' defaultValue={avgRating} precision={0.5} readOnly /> /{ratingsCount}
           </Grid>
           <Typography color='text.secondary' variant='body2'>
-            {authors.map(author => <>{author} <br /></>)}
+            {authors.map(author => 
+              <Fragment key={author}>
+                {author} <br />
+              </Fragment>
+            )}
           </Typography>
           <Typography variant='body1'>
             {title}
