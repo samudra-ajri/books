@@ -8,18 +8,18 @@ import { Grid, Rating } from '@mui/material'
 import BookmarkIcon from '@mui/icons-material/BookmarkBorderRounded'
 
 function MediaCard(props) {
-  const title = props.book.volumeInfo.title
-  const avgRating = props.book.volumeInfo.averageRating ?? 0
-  const ratingsCount = props.book.volumeInfo.ratingsCount ?? 0
-  const thumbnail = props.book.volumeInfo.imageLinks?.thumbnail ??
+  const title = props.book.title
+  const avgRating = props.book.avgRating ?? 0
+  const ratingsCount = props.book.ratingsCount ?? 0
+  const thumbnail = props.book.thumbnail ??
     'https://www.quenchhome.com/img/content/property_photographs/default.jpg'
-  let authors = props.book.volumeInfo.authors ?? []
+  let authors = props.book.authors ?? []
 
-  if (authors.length > 3) authors = [authors[0], authors[1] + ', et al.']
+  if (authors.length > 2) authors = [authors[0], authors[1] + ', et al.']
 
   return (
     <Grid item>
-      <Card sx={{ width: 200, height: 550 }}>
+      <Card sx={{ width: 200, height: 500 }}>
         <CardMedia
           component='img'
           height='300'

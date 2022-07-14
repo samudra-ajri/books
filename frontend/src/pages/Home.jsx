@@ -24,7 +24,16 @@ function Home() {
       ) : (
         <Grid container spacing={2} paddingTop={5} paddingBottom={10}>
           {foundBooks.map(book => 
-            <MediaCard key={book.id} book={book}/>
+            <MediaCard 
+              key={book.id}
+              book={{
+                title: book.volumeInfo.title,
+                avgRating: book.volumeInfo.averageRating,
+                ratingsCount: book.volumeInfo.ratingsCount,
+                thumbnail: book.volumeInfo.imageLinks?.thumbnail,
+                authors: book.volumeInfo.authors
+              }}
+            />
           )}
         </Grid>
       )}
