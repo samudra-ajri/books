@@ -26,6 +26,7 @@ function Home() {
           {foundBooks.map(book => 
             <MediaCard 
               key={book.id}
+              page='home'
               book={{
                 title: book.volumeInfo.title,
                 avgRating: book.volumeInfo.averageRating,

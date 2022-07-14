@@ -13,8 +13,8 @@ function MediaCard(props) {
   const ratingsCount = props.book.ratingsCount ?? 0
   const thumbnail = props.book.thumbnail ??
     'https://www.quenchhome.com/img/content/property_photographs/default.jpg'
+  const page = props.page  
   let authors = props.book.authors ?? []
-
   if (authors.length > 2) authors = [authors[0], authors[1] + ', et al.']
 
   return (
@@ -26,12 +26,16 @@ function MediaCard(props) {
           image={thumbnail}
           alt={title}
         />
-        <CardActions>
+        {page === 'home' ? (
+          <CardActions>
           <Button color='inherit'>
             <BookmarkIcon  fontSize='medium'/>
             <Typography variant='subtitle2'>Add To Favorite</Typography>
           </Button>
         </CardActions>
+        ) : (
+          <></>
+        )}
         <CardContent>
           <Grid item>
             <Rating name='half-rating-read' size='small' defaultValue={avgRating} precision={0.5} readOnly /> /{ratingsCount}

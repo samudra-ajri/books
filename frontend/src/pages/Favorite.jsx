@@ -11,7 +11,16 @@ function Favorite() {
         MY FAVORITE BOOKS
       </Typography>
       <Grid container spacing={2} paddingTop={5} paddingBottom={10}>
-        <MediaCard />
+        <MediaCard
+          key={book.id}
+          page='home'
+          book={{
+            title: book.volumeInfo.title,
+            avgRating: book.volumeInfo.averageRating,
+            ratingsCount: book.volumeInfo.ratingsCount,
+            thumbnail: book.volumeInfo.imageLinks?.thumbnail,
+            authors: book.volumeInfo.authors
+          }} />
       </Grid>
     </>
   )
