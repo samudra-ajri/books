@@ -8,7 +8,7 @@ function Header() {
       <Box sx={{ pb: 15 }}>
         <AppBar color='default'>
           <Toolbar>
-            <Typography variant="h6" component={Link} to="/" sx={{
+            <Typography variant='h6' component={Link} to='/' sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },
               fontFamily: 'monospace',
@@ -19,8 +19,8 @@ function Header() {
               BOOKS
             </Typography>
             <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-              <Button component={Link} to="/" sx={{ my: 2, color: 'inherit', display: 'block' }}> Home </Button>
-              <Button component={Link} to="/favorites" sx={{ my: 2, color: 'inherit', display: 'block' }}> Favorite </Button>
+              <Button component={Link} to='/' sx={{ my: 2, color: 'inherit', display: 'block' }}> Home </Button>
+              <Button component={Link} to='/favorites' sx={{ my: 2, color: 'inherit', display: 'block' }}> Favorite </Button>
           </Box>
           </Toolbar>
         </AppBar>

@@ -1,10 +1,10 @@
-import { Grid, Typography } from "@mui/material"
-import MediaCard from "../components/MediaCard"
+import { Grid, Typography } from '@mui/material'
+import MediaCard from '../components/MediaCard'
 
 function Favorite() {
   return (
     <>
-      <Typography variant="h5" align="center" sx={{
+      <Typography variant='h5' align='center' sx={{
         fontFamily: 'monospace',
         letterSpacing: '.3rem',
       }}>
