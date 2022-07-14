@@ -1,5 +1,6 @@
 import { Container } from '@mui/material'
 import { BrowserRouter as Router, Route, Routes} from 'react-router-dom'
+import { ToastContainer } from 'react-toastify'
 import Header from './components/Header'
 import Favorite from './pages/Favorite'
 import Home from './pages/Home'
@@ -16,6 +17,7 @@ function App() {
           </Routes>
         </Container>
       </Router>
+      <ToastContainer />
     </>
   )
 }

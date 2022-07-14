@@ -8,19 +8,23 @@ import { Grid, Rating } from '@mui/material'
 import BookmarkIcon from '@mui/icons-material/BookmarkBorderRounded'
 import { Fragment } from 'react'
 import { useDispatch } from 'react-redux'
-import { deleteFavoriteBook } from '../features/favorites/favoriteSlice'
+import { createFavoriteBooks, deleteFavoriteBook } from '../features/favorites/favoriteSlice'
 
 function MediaCard(props) {
   const dispatch = useDispatch()
   const id = props.book.id
   const title = props.book.title
-  const avgRating = props.book.avgRating ?? 0
+  const avgRating = props.book.averageRating ?? 0
   const ratingsCount = props.book.ratingsCount ?? 0
   const thumbnail = props.book.thumbnail ??
     'https://www.quenchhome.com/img/content/property_photographs/default.jpg'
   const page = props.page
   let authors = props.book.authors ?? []
   if (authors.length > 2) authors = [authors[0], authors[1] + ', et al.']
+
+  const addFavorite = () => {
+    dispatch(createFavoriteBooks(props.book))
+  }
 
   const removeFavorite = () => {
     dispatch(deleteFavoriteBook(id))
@@ -37,7 +41,7 @@ function MediaCard(props) {
         />
         <CardActions>
           {page === 'home' ? (
-            <Button color='inherit'>
+            <Button color='inherit' onClick={addFavorite}>
               <BookmarkIcon fontSize='medium' />
               <Typography variant='subtitle2'>Add To Favorite</Typography>
             </Button>

@@ -9,6 +9,24 @@ const initialState = {
   message: '',
 }
 
+// Create new favorite book
+export const createFavoriteBooks = createAsyncThunk(
+  'favoriteBook/create',
+  async (bookData, thunkAPI) => {
+    try {
+      return await favoriteBooksService.createFavoriteBook(bookData)
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString()
+      return thunkAPI.rejectWithValue(message)
+    }
+  }
+)
+
 // Get all favorite books
 export const getFavoriteBooks = createAsyncThunk(
   'favoriteBooks/getAll',
@@ -53,6 +71,19 @@ export const favoriteBookSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
+      .addCase(createFavoriteBooks.pending, (state) => {
+        state.isLoading = true
+      })
+      .addCase(createFavoriteBooks.fulfilled, (state, action) => {
+        state.isLoading = false
+        state.isSuccess = true
+        state.books.push(action.payload)
+      })
+      .addCase(createFavoriteBooks.rejected, (state, action) => {
+        state.isLoading = false
+        state.isError = true
+        state.message = action.payload
+      })
       .addCase(getFavoriteBooks.pending, (state) => {
         state.isLoading = true
       })

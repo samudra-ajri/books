@@ -17,7 +17,7 @@ const createFavorite = asyncHandler(async (req, res) => {
     const exists = await FavoriteBook.findOne({ googleBookId })
     if (exists) {
         res.status(404)
-        throw new Error('BOOK already added')
+        throw new Error('book already on favorite')
     }
 
     const favorite = await FavoriteBook.create({ 

@@ -2,6 +2,12 @@ import axios from 'axios'
 
 const API_URL = '/api/favorites/'
 
+// Create new favorite books
+const createFavoriteBook = async (bookData) => {
+  const response = await axios.post(API_URL, bookData)
+  return response.data
+}
+
 // Get all favorite books
 const getFavoriteBooks = async () => {
   const response = await axios.get(API_URL)
@@ -15,6 +21,7 @@ const deleteFavoriteBook = async (favoriteBookId) => {
 }
 
 const favoriteBooksService = {
+  createFavoriteBook,
   getFavoriteBooks,
   deleteFavoriteBook
 }
