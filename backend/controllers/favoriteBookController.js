@@ -42,6 +42,8 @@ const createFavorite = asyncHandler(async (req, res) => {
 // @access  Public
 const getFavorites = asyncHandler(async (req, res) => {
     const favorites = await FavoriteBook.find({})
+        .sort('-createdAt')
+
     res.status(200).json({ 
         total: favorites.length, 
         books: favorites 
